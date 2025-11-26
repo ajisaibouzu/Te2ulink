@@ -1,0 +1,217 @@
+:root {
+    /* Palette: Warm/Book/Wood Theme */
+    --bg-color: #f4ecd8;
+    /* Old paper/Cream */
+    --text-color: #4a3b32;
+    /* Dark Brown */
+    --accent-color: #8d6e63;
+    /* Muted Earthy Brown */
+    --card-bg: #fffcf5;
+    /* Very light cream for cards */
+    --card-border: #d7ccc8;
+    --hover-bg: #efebe9;
+    --font-main: 'Shippori Mincho', 'Noto Serif JP', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Subtle wood grain / paper texture effect using gradients */
+    background-image:
+        linear-gradient(90deg, rgba(200, 180, 160, 0.1) 1px, transparent 1px),
+        linear-gradient(rgba(200, 180, 160, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 380px;
+    /* Reduced width to match the compact look of the reference */
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    animation: fadeIn 1s ease-out;
+    /* Book-like container appearance */
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.02),
+        0 20px 40px rgba(92, 64, 51, 0.08);
+    border-radius: 4px;
+    /* Slight rounding like a book page */
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    /* Reduced gap from 1.5rem */
+    text-align: center;
+}
+
+.profile-img {
+    width: 100%;
+    /* Fill the container width like the reference */
+    height: auto;
+    /* Maintain aspect ratio */
+    object-fit: contain;
+    border-radius: 12px;
+    /* Slightly rounded square */
+    border: 4px solid #fff;
+    box-shadow:
+        0 4px 12px rgba(74, 59, 50, 0.15),
+        0 0 0 1px rgba(74, 59, 50, 0.05);
+}
+
+.profile-name {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #3e2723;
+    margin-top: 0;
+    /* Removed top margin */
+}
+
+.profile-bio {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #5d4037;
+    max-width: 340px;
+    font-weight: 400;
+}
+
+.links-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.link-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    /* Keep it rectanglular/book-like */
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* Left accent border to look like a book spine or bookmark */
+.link-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: var(--accent-color);
+    /* Default fallback */
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    opacity: 0.7;
+    transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+/* Brand specific accent colors - Muted/Earthy tones to match theme */
+.link-card.x::after {
+    background-color: #37474f;
+    /* Dark Blue Grey for X */
+}
+
+.link-card.threads::after {
+    background-color: #8e7e94;
+    /* Muted Purple for Threads */
+}
+
+.link-card.note::after {
+    background-color: #558b2f;
+    /* Olive Green for note */
+}
+
+.link-card:hover {
+    transform: translateY(-2px);
+    background: #fff;
+    box-shadow: 0 8px 16px rgba(92, 64, 51, 0.1);
+    border-color: #bcaaa4;
+}
+
+.link-card:hover::after {
+    width: 8px;
+    opacity: 1;
+}
+
+.link-content {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding-left: 0.5rem;
+    /* Space for the accent border */
+}
+
+.link-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: #5d4037;
+}
+
+.link-title {
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+}
+
+.link-arrow {
+    color: #a1887f;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.link-card:hover .link-arrow {
+    transform: translateX(4px);
+    color: #5d4037;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 2rem 1.5rem;
+        max-width: 90%;
+    }
+}
